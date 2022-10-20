@@ -4,7 +4,11 @@
       <%= value %>
     </div>
   <% end %>
-  <h6 class="border-bottom border-gray pb-2 mb-0">Inbox</h6>
+  <h6 class="border-bottom border-gray pb-2 mb-0">Inbox 
+    <span class="badge badge-danger">
+      <%= User.current.inbox.unread_count %>
+    </span>
+  </h6>
   <% User.current.inbox.messages.each do |message| %>
     <%= link_to message do %>
       <div class="media text-muted pt-3">

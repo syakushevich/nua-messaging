@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
+    @message.update(read: true)
   end
 
   def create_reply
