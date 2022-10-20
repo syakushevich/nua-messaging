@@ -4,7 +4,7 @@
   </h5>
 
   <div class="card-body">
-    <%= form_for @message do |f| %>
+    <%= form_for :message, url: create_reply_message_path, method: :create do |f| %>
       <div class="form-group py-3">
         <%= f.text_area :body, class: "form-control", rows: 3 %>
       </div>

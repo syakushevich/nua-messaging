@@ -1,4 +1,9 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+  <% end %>
   <h6 class="border-bottom border-gray pb-2 mb-0">Inbox</h6>
   <% User.current.inbox.messages.each do |message| %>
     <%= link_to message do %>
