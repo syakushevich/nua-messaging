@@ -6,6 +6,6 @@
   <div class="card-body">
     <p class="card-text"><%= @message.body %></p>
     <%= link_to "Reply", new_reply_message_path(@message), class: "btn btn-primary" %>
-    <a href="#" class="btn btn-primary">I've lost my prescription</a>
+    <%= link_to "Issue new prescription [10€]", issue_new_prescription_message_path, method: :create, class: "btn btn-primary" %>
   </div>
 </div>

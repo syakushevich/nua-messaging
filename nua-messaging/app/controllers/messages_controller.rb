@@ -19,6 +19,17 @@ class MessagesController < ApplicationController
     redirect_to :root
   end
 
+  def issue_new_prescription
+    result = ActiveRecord::Base.transaction do
+      new_prescription_message
+      raise ActiveRecord::Rollback unless PaymentProviderApi.call(User.current)
+      Payment.create(user: User.current)
+    end
+
+    result ? flash[:success] = 'Prescription request sent' : flash[:alert] = 'Oops, something went wrong with your payment'
+    redirect_to :root
+  end
+
   private
 
   def message_params
